@@ -24,3 +24,26 @@ export function removeDuplicate<T>(originalArray: T[], propertyToCheck: keyof T)
 
     return newArray;
 }
+
+/**
+ * Removes properties with undefined, null, or empty string values from an object.
+ *
+ * @param {Object} obj - The original object from which properties should be removed.
+ * @returns {Object} - The new object with properties removed.
+ */
+export function removeUndefinedNullEmpty(obj: {
+    [key: string]: string | null | undefined;
+}): { [key: string]: string } {
+    const result: { [key: string]: string } = {};
+
+    for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            const value = obj[key];
+            if (value !== null && value !== undefined && value !== '') {
+                result[key] = value;
+            }
+        }
+    }
+
+    return result;
+}
