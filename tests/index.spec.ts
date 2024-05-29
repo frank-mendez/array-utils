@@ -1,4 +1,4 @@
-import {removeDuplicate, removeUndefinedNullEmpty} from '../index';
+import {removeDuplicate, removeUndefinedNullEmpty, sortArrayByProperty} from '../index';
 
 describe('removeDuplicate', () => {
     it('should remove duplicate items based on a specific property', () => {
@@ -38,5 +38,41 @@ describe('removeUndefinedNullEmpty', () => {
 
         const result = removeUndefinedNullEmpty(originalObject);
         expect(result).toEqual(expectedObject);
+    });
+});
+
+describe('sortArrayByProperty', () => {
+    it('should sort an array of objects based on a specific property', () => {
+        const originalArray = [
+            { id: 3, name: 'Item 3' },
+            { id: 1, name: 'Item 1' },
+            { id: 2, name: 'Item 2' },
+        ];
+
+        const expectedArray = [
+            { id: 1, name: 'Item 1' },
+            { id: 2, name: 'Item 2' },
+            { id: 3, name: 'Item 3' },
+        ];
+
+        const result = sortArrayByProperty(originalArray, 'id');
+        expect(result).toEqual(expectedArray);
+    });
+
+    it('should sort an array of objects based on the name property', () => {
+        const originalArray = [
+            { id: 3, name: 'Charlie' },
+            { id: 1, name: 'Alice' },
+            { id: 2, name: 'Bob' },
+        ];
+
+        const expectedArray = [
+            { id: 1, name: 'Alice' },
+            { id: 2, name: 'Bob' },
+            { id: 3, name: 'Charlie' },
+        ];
+
+        const result = sortArrayByProperty(originalArray, 'name');
+        expect(result).toEqual(expectedArray);
     });
 });

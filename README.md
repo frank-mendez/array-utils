@@ -1,6 +1,6 @@
 # Array Utils
 
-Array Utils is a utility package that provides various functions to manipulate arrays. It is written in TypeScript and JavaScript.
+Array Utils is a utility package that provides various functions to manipulate arrays and objects. It is written in TypeScript.
 
 ## Installation
 
