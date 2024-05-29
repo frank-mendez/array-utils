@@ -47,3 +47,23 @@ export function removeUndefinedNullEmpty(obj: {
 
     return result;
 }
+
+/**
+ * Sorts an array of objects based on a specific property.
+ *
+ * @template T - The type of the items in the array.
+ * @param {T[]} array - The original array to be sorted.
+ * @param {keyof T} property - The property to sort the array by.
+ * @returns {T[]} - The sorted array.
+ */
+export function sortArrayByProperty<T>(array: T[], property: keyof T): T[] {
+    return array.sort((a, b) => {
+        if (a[property] < b[property]) {
+            return -1;
+        }
+        if (a[property] > b[property]) {
+            return 1;
+        }
+        return 0;
+    });
+}
